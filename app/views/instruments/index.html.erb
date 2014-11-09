@@ -1,0 +1,134 @@
+<em><em><em><em><!DOCTYPE html></em></em></em></em>
+<html lang="en" dir="ltr">
+
+<head>
+<%= stylesheet_link_tag "css"%>
+<title>仪器设备管理</title>
+</head>
+
+<body>
+<div class="menu">
+<ul>
+<li style="width:0px;"><a></a></li>
+<li><a href="#" class="home">主页</a></li>
+<li><a href="#" class="cart">我的购物车</a></li>
+<li><a href="#" class="cart">我的订单</a></li>
+<li class="active"><a href="#" class="account">仪器提供方</a></li>
+<li><a class="checkout">退出</a></li>
+<li style="float:right;"><a href="#" class="login">登录</a></li>
+<li style="float:right;"><a class="register">注册</a></li>
+</ul>
+</div>
+
+<div class="header">
+<div class="logo_img">
+	<%=image_tag "logo.png"%>  
+</div>
+</div>
+
+<div style="width:1000px;margin: 0 auto;margin-top:10px;">
+<div class="linktree">
+  <span class="STYLE1">
+  	<a href="#">主页</a>
+  	&raquo; 
+  	<a href="#">仪器设备管理</a>
+  </span>
+ </div>
+
+<div id="column-left">
+<div class="box">
+  <div class="box-content" style="background:none;border:none;">
+    <div class="box-category">
+      <ul>
+        <li>
+                <a href="#">仪器设备管理</a>            </li>
+                <li>预约交易管理<a href="#" class="active"></a>
+                              <ul>
+                        <li>
+                            <a href="#4"> - 审核预约单</a>                                             
+                        </li>
+                        <li>
+                            <a href="#4"> - 仪器线下授权</a>                           
+                        </li>
+                        <li>
+                            <a href="#"> - 已结算交易 (0)</a>             
+                        </li>
+                      </ul>
+            </li>
+          </ul>
+    </div>
+  </div>
+</div>
+</div>
+ 
+<div id="content">
+  <div class="column"></div>
+  <div class="product-list">
+  		<!-- begin a product -->
+  		<% @instruments.each do |instrument| %>
+        	<div class="struct">
+                	<div class="struct-right"></div>
+                    <div class="struct-left"></div>
+                    <div class="struct-center">
+                    	<div class="line">
+                            <a href="#" class="image-link">
+                                <div class="image">
+                                	<%= image_tag instrument.image_url %>                                
+                            	</div>
+                            </a>
+                            
+                            <div class="right">
+                              <div class="price">￥  <%= instrument.price %></div>
+                                                                
+                                <div class="cart combo">
+                                	<%= link_to '查看', instrument %><span class="icon icon-compare">&nbsp;</span>
+                                    <%= link_to '编辑', edit_instrument_path(instrument) %><span class="icon icon-basket">&nbsp;</span>
+                                    <%= link_to '删除', instrument, method: :delete, data: { confirm: '确定删除？'} %><span class="icon icon-wish">&nbsp;</span>
+                                </div>
+                            </div>
+                            
+                            <div class="name"><a href="#"><%= instrument.name + "-" + instrument.type_name %></a></div>
+                            <div class="description"><%= instrument.description %></div>
+                            <div class="clearfix"></div>
+                        </div>
+        			</div>
+            </div>
+        <% end %>
+    	<!--end a product -->
+              </div>
+        <div class="clearfix"></div>
+        <div class="column">
+        	<div class="pagination"><div class="results">共 <%= @instruments.size() %> 台仪器</div></div>
+        </div>
+        <br>
+        <div class="column">
+        	<div class="pagination"><div class="results"><%= link_to '发布新仪器', new_instrument_path %></div></div>
+        </div>
+            
+  </div>
+
+</div>
+
+<div class="icart-footer">
+<div class="icart-footer-top">
+	<div style="width:1000px; margin:0 auto;">	
+	</div>
+</div>
+<div class="icart-footer-container">
+  <div class="clearfix"></div>
+	</div>		
+	<div class="icart-footer-bottom">
+		<div style="width:1000px; margin:0 auto;">				
+		<div class="icart-logo-footer"></div>	
+			<ul>
+			<li style="float:right;padding-top:10px;list-style:none;">&copy; Copyright &copy; 2014.Leey.</li>
+			</ul>		
+		<div class="clearfix"></div>
+		</div>
+<br>
+</div>
+</div>
+
+</body>
+</html>
+
