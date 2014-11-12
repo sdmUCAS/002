@@ -1,37 +1,84 @@
-<%= form_for(@instrument) do |f| %>
-  <% if @instrument.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this instrument from being saved:</h2>
-
-      <ul>
+<%= form_for(@instrument, :html => { :multipart => true }) do |f| %>
+ <% if @instrument.errors.any? %>
+ <div id="error_explanation">
+   <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this instrument from being saved:</h2>
+   <ul>
       <% @instrument.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
+   </ul>
+ </div>
+ <% end %>
+  
+ <div class="product-info"> 
+  <div class="right">
+    <div class="image">
+		<%= image_tag(@instrument.image_url, :size => "228x228") %>
+		<%= f.file_field (:picture) %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :type_name %><br>
-    <%= f.text_field :type_name %>
+  <div class="category-info">
+    <div class="description"> 仪器名称：<%= f.text_field( :name, :size=>"60") %></div>
+    <div class="description"> 仪器型号：<%= f.text_field( :type_name, :size=>"60") %></div>
+    <div class="description"> 仪器编号：<%= f.text_field( :number, :size=>"60") %></div>
+    <div class="description"> 仪器类型：
+    	<%= 
+			@itypes = Itype.find_each()
+			f.select(:itype, @itypes.map {|u| [u.name]})
+    	%>
+	</div>
+    <div class="description"> 主要功能：<%= f.text_area(:description, :rows=>"3", :cols=>"60") %> </div>
   </div>
-  <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+  <div class="category-info">
+    <div class="description"> 可预约时间：
+    	<%= check_box_tag(:pet_dog) %>
+		<%= label_tag( "周一") %>
+		<%= check_box_tag(:pet_cat) %>
+		<%= label_tag("周二") %>
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag("周三") %>
+		<%= check_box_tag(:pet_cat) %>
+		<%= label_tag("周四") %>
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag( "周五") %>
+		<%= check_box_tag(:pet_cat) %>
+		<%= label_tag( "周六") %>
+		<%= check_box_tag(:pet_cat) %>
+		<%= label_tag( "周日") %>
+		<br></br>
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag( "允许上午预约：") %>
+		<%= select_hour(6, start_hour: 6, end_hour: 12)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>  ——  
+		<%= select_hour(12, start_hour: 6, end_hour: 12)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>
+		<br></br>
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag( "允许下午预约：") %>
+		<%= select_hour(12, start_hour: 12, end_hour: 18)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>  ——  
+		<%= select_hour(18, start_hour:12, end_hour: 18)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>
+		<br></br>
+		<%= check_box_tag(:pet_dog) %>
+		<%= label_tag( "允许晚上预约：") %>
+		<%= select_hour(18, start_hour: 18, end_hour: 23)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>  ——  
+		<%= select_hour(23, start_hour: 18, end_hour: 23)%>： 
+		<%= f.select(:available_time, %w{ 00 30 }) %>
+		<br></br>
+    </div>
+    <div class="description"> 预约价格：<%= f.number_field( :price, :size=>"60") %> </div>
+    <div class="description"> 工作状态：<%= f.select(:state, %w{ 正常 故障 维修 报废 停用 }) %></div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="category-info">
+    <div class="description"> 购置时间：<%= f.date_field( :purchase_date) %></div>
+    <div class="description"> 购置金额：<%= f.number_field( :purchase_price, :size=>"60") %></div>
+    <div class="description"> 所属单位：<%= f.text_field( :company, :size=>"80") %></div>
+    <div class="description"> 放置地点：<%= f.text_field( :location, :size=>"80") %></div>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+  <div class="actions">   
+  	<%= submit_tag '确认发布'%> 
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ </div>
 <% end %>

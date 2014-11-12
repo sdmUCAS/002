@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :instruments
 
+	resources :instruments do
+	  post :upload, on: :collection, as: :upload
+	end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

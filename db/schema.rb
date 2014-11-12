@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109062232) do
+ActiveRecord::Schema.define(version: 20141111140348) do
 
   create_table "instruments", force: true do |t|
     t.string   "name"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 20141109062232) do
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "itypes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", force: true do |t|
+    t.string "comment"
+    t.string "name"
+    t.string "content_type"
+    t.binary "data",         limit: 1048576
   end
 
 end
