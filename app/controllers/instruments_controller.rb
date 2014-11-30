@@ -27,7 +27,6 @@ class InstrumentsController < ApplicationController
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
-    
     @instrument.image_url = upload
 
     respond_to do |format|

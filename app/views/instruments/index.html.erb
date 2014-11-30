@@ -1,61 +1,38 @@
-<em><em><em><em>
-<!DOCTYPE html>
-</em></em></em></em>
-<html lang="en" dir="ltr">
-<head>
-<%= stylesheet_link_tag "css"%>
-<title>仪器设备管理</title>
-</head>
-<body>
 
-<%= render "share/menu" %>
-
-<div style="width:1000px;margin: 0 auto;margin-top:10px;">
-  <%= render "left" %>
-  <div id="content">
-    <div class="product-list">
-      <!-- begin a product -->
-      <% @instruments.each do |instrument| %>
-      <div class="struct">
-        <div class="struct-right"></div>
-        <div class="struct-left"></div>
-        <div class="struct-center">
-          <div class="line"> <a href="#" class="image-link">
-           <div class="image"><%= image_tag(instrument.image_url, :size => "110x110") %></div>
-            </a>
-            <div class="right">
-              <div class="price">￥ <%= instrument.price %></div>
-              <div> 
-              	<%= link_to (image_tag ("information.png"),:alt=>'查看') , instrument %> 
-              	<%= link_to (image_tag ("edit.png"),:alt=>'编辑'), edit_instrument_path(instrument) %> 
-              	<%= link_to (image_tag ("delete.png"),:alt=>'删除'), instrument, method: :delete, data: { confirm: '确定删除？'} %> 
-          	</div>
-            </div>
-            <div class="name"><a href="#"><%= instrument.name + "-" + instrument.type_name %></a></div>
-            <div class="description"><%= instrument.description[0, 70] + "..." %></div>
-            <div class="clearfix"></div>
+<div id="content">
+<div class="product-list">
+  <!-- begin a product -->
+  <% @instruments.each do |instrument| %>
+  <div class="struct">
+    <div class="struct-center">
+      <div class="line"> 
+        <div class="image"><%= link_to (image_tag(instrument.image_url, :size => "110x110")) , instrument %></div>
+        <div class="right">
+          <div class="price"><%= number_to_currency(instrument.price, :unit => "￥ ")  %></div>
+          <div>
+          	<%= link_to (image_tag ("information.png"),:alt=>'查看') , instrument %> 
+            <%= link_to (image_tag ("edit.png"),:alt=>'编辑'), edit_instrument_path(instrument) %> 
+            <%= link_to (image_tag ("delete.png"),:alt=>'删除'), instrument, method: :delete, data: { confirm: '确定删除？'} %>  
           </div>
         </div>
-      </div>
-      <% end %>
-      <!--end a product -->
-    </div>
-    <div class="clearfix"></div>
-    <div class="column">
-      <div class="pagination">
-        <div class="results">共 <%= @instruments.size() %> 台仪器</div>
-      </div>
-    </div>
-    <br>
-    <div class="column">
-      <div class="pagination">
-        <div class="results"><%= link_to '发布新仪器', new_instrument_path %></div>
+        <div class="name"><%= link_to (instrument.name + "-" + instrument.type_name) , instrument %> </div>
+        <div class="description"><%= instrument.description[0, 150] + "..." %></div>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>
+  <% end %>
+  <!--end a product -->
 </div>
-
-<%= render "share/footer" %>
-
-</body>
-</html>
+<div class="clearfix"></div>
+<div class="column">
+  <div class="pagination">
+    <div class="results">共 <%= @instruments.size() %> 台仪器</div>
+  </div>
+</div>
+<br>
+<div class="column">
+  <div class="pagination">
+    <div class="results"><%= link_to '发布新仪器', new_instrument_path %></div>
+  </div>
+</div>

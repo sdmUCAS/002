@@ -1,24 +1,9 @@
-<html lang="en" dir="ltr">
-<head>
-<%= stylesheet_link_tag "css"%>
-<title>仪器设备管理</title>
-</head>
-<body>
-<%= render "share/menu" %>
-<div style="width:1000px;margin: 0 auto;margin-top:10px;"> 
-  <%= render "left" %>
-  <div id="content">
-    <div class="block-white">
-      <div class="block-content"> </div>
-      <div class="separator"></div>
-      <div class="block-content"> 
-      	<%= render 'form' %> 
-      	<%= link_to '查看', @instrument %> |
-		<%= link_to '返回', instruments_path %>
-  	  </div>
-    </div>
+
+<div id="content">
+  <div class="block-white">
+    <div class="block-content"> 
+    	<%= render 'form' %> 
+    	<%= link_to '查看', @instrument %>
+    	<%= link_to '返回', instruments_path %> </div>
   </div>
 </div>
-<%= render "share/footer" %>
-</body>
-</html>

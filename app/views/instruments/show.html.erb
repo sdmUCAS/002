@@ -1,56 +1,36 @@
-<em><em><em><em>
-<!DOCTYPE html>
-</em></em></em></em>
-<html lang="en" dir="ltr">
-<head>
-<%= stylesheet_link_tag "css"%>
-<title>仪器设备管理</title>
-</head>
-<body>
 
-<%= render "share/menu" %>
-
-<div style="width:1000px;margin: 0 auto;margin-top:10px;">
-  <%= render "left" %>
-  <div id="content">
-    <div class="block-white">
-      <div class="block-content"> </div>
-      <div class="separator"></div>
-      <div class="block-content">
-        <div class="product-info">
-          <div class="right">
-            <div class="image"><%= image_tag(@instrument.image_url, :size => "228x228") %></div>
-          </div>
-          <div class="category-info">
-            <div class="description"> 仪器名称：<%= @instrument.name %></div>
-            <div class="description"> 仪器型号：<%= @instrument.type_name %></div>
-            <div class="description"> 仪器编号：<%= @instrument.number %></div>
-            <div class="description"> 仪器类型：<%= @instrument.itype %></div>
-            <div class="description"> 主要功能：<%= simple_format(@instrument.description)%></div>
-          </div>
-          <div class="category-info">
-            <div class="description"> 可用时间：<%= @instrument.available_time %></div>
-            <div class="description"> 预约价格：<%= @instrument.price %></div>
-            <div class="description"> 工作状态：<%= @instrument.state %></div>
-          </div>
-          <div class="category-info">
-            <div class="description"> 购置时间：<%= @instrument.purchase_date %></div>
-            <div class="description"> 购置金额：<%= @instrument.purchase_price %></div>
-            <div class="description"> 所属单位：<%= @instrument.company %></div>
-            <div class="description"> 放置地点：<%= @instrument.location %></div>
-          </div>
-          <div>  <%= link_to '返 回', instruments_path %> 
-          	 <%= image_tag "edit.png" %><%= link_to '编 辑', edit_instrument_path(@instrument) %> 
-          	 <%= image_tag "delete.png" %><%= link_to '删 除', @instrument, method: :delete, data: { confirm: '确定删除？'} %> </div>
+<div id="content">
+  <div class="block-white">
+    <div class="block-content"> </div>
+    <div class="separator"></div>
+    <div class="block-content">
+      <div class="product-info">
+        <div class="right">
+          <div class="image"><%= image_tag(@instrument.image_url, :size => "228x228") %></div>
         </div>
+        <div class="category-info">
+          <div class="description"> 仪器名称：<%= @instrument.name %></div>
+          <div class="description"> 仪器型号：<%= @instrument.type_name %></div>
+          <div class="description"> 仪器编号：<%= @instrument.number %></div>
+          <div class="description"> 仪器类型：<%= @instrument.itype %></div>
+          <div class="description"> 主要功能：<%= simple_format(@instrument.description)%></div>
+        </div>
+        <div class="category-info">
+          <div class="description"> 可用时间：<%= @instrument.available_time %></div>
+          <div class="description"> 预约价格：<%= @instrument.price %></div>
+          <div class="description"> 工作状态：<%= @instrument.state %></div>
+        </div>
+        <div class="category-info">
+          <div class="description"> 购置时间：<%= @instrument.purchase_date %></div>
+          <div class="description"> 购置金额：<%= @instrument.purchase_price %></div>
+          <div class="description"> 所属单位：<%= @instrument.company %></div>
+          <div class="description"> 放置地点：<%= @instrument.location %></div>
+        </div>
+        <div> 
+        	<%= link_to '返 回', instruments_path %> 
+        	<%= link_to '编 辑', edit_instrument_path(@instrument) %> 
+        	<%= link_to '删 除', @instrument, method: :delete, data: { confirm: '确定删除？'} %> </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-<%= render "share/footer" %>  
-
-</body>
-</html>
-</em></em>
