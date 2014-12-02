@@ -8,7 +8,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-				 			 
+
   Admin.create({ login_name: 'admin', password: 'admin123' })
   
   Department.create([{ name: '信息工程研究所', address: '北京市海淀区闵庄路甲89号2号楼2014室', city: '北京' }, 

@@ -16,15 +16,15 @@
           <div class="description"> 主要功能：<%= simple_format(@instrument.description)%></div>
         </div>
         <div class="category-info">
-          <div class="description"> 可用时间：<%= @instrument.available_time %></div>
+          <div class="description"> 可用时间：</div>
           <div class="description"> 预约价格：<%= @instrument.price %></div>
-          <div class="description"> 工作状态：<%= @instrument.state %></div>
+          <div class="description"> 工作状态：<%= @instrument.status %></div>
         </div>
         <div class="category-info">
-          <div class="description"> 购置时间：<%= @instrument.purchase_date %></div>
-          <div class="description"> 购置金额：<%= @instrument.purchase_price %></div>
-          <div class="description"> 所属单位：<%= @instrument.company %></div>
-          <div class="description"> 放置地点：<%= @instrument.location %></div>
+          <div class="description"> 购置时间：<%= @instrument.bought_time %></div>
+          <div class="description"> 购置金额：<%= @instrument.bought_price %></div>
+          <div class="description"> 所属单位：<%= @instrument.department_id %></div>
+          <div class="description"> 放置地点：<%= @instrument.place %></div>
         </div>
         <div> 
         	<%= link_to '返 回', instruments_path %> 

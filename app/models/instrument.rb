@@ -1,5 +1,5 @@
 class Instrument < ActiveRecord::Base
-	
+  belongs_to:departments  
 	
   validates_presence_of :name, :type_name, :description, :price, :image_url;
   validates_numericality_of :price
