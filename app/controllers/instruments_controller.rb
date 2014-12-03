@@ -1,24 +1,30 @@
 class InstrumentsController < ApplicationController
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /instruments
   # GET /instruments.json
   def index
-    @instruments = Instrument.all
+    # @instruments = Instrument.all
+    # 分页
+    @instruments = Instrument.paginate(:page => params[:page], :per_page => 5)  
   end
 
   # GET /instruments/1
   # GET /instruments/1.json
   def show
+  	@department_name = Department.find(@instrument.department_id).name
   end
 
   # GET /instruments/new
   def new
+  	@depts = Department.all
     @instrument = Instrument.new
   end
 
   # GET /instruments/1/edit
   def edit
+  	# @department_name = Department.find(@instrument.department_id).name
+  	@depts = Department.all
   	@instrument.image_url == nil ? 
   		@image_tag = "imac_1-228x228.jpg" : @image_tag = @instrument.image_url
   end
@@ -86,7 +92,8 @@ class InstrumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instrument_params
-      params.require(:instrument).permit(:name, :type_name, :number, :itype, :image_url, :description, :available_time, :price, :purchase_date, :purchase_price, :company, :location)
+      params.require(:instrument).permit(:name, :type_name, :number, :image_url, :itype, :bought_time, :bought_price, :description, :department_id, 
+      :place, :status, :price)
     end
     
 end

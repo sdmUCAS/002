@@ -1,4 +1,5 @@
 
+
 <div id="content">
 <div class="product-list">
   <!-- begin a product -->
@@ -24,12 +25,15 @@
   <% end %>
   <!--end a product -->
 </div>
-<div class="clearfix"></div>
-<div class="column">
-  <div class="pagination">
-    <div class="results">共 <%= @instruments.size() %> 台仪器</div>
+
+<%= stylesheet_link_tag "application"%>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @instruments, :html => false%>
   </div>
+  <%= will_paginate @instruments, :container => false, :previous_label=>'前一页', :next_label=>'后一页'  %>
 </div>
+
 <br>
 <div class="column">
   <div class="pagination">

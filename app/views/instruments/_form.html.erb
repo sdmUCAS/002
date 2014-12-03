@@ -22,9 +22,9 @@
     <div class="description"> 仪器名称：<%= f.text_field( :name, :size=>"60") %></div>
     <div class="description"> 仪器型号：<%= f.text_field( :type_name, :size=>"60") %></div>
     <div class="description"> 仪器编号：<%= f.text_field( :number, :size=>"60") %></div>
-    <div class="description"> 仪器类型：<%= f.text_field( :itype, :size=>"60") %>
+    <div class="description"> 仪器类型：<%= f.select(:itype, %w{ 生物 化学 物理 电子 }) %>
 	</div>
-    <div class="description"> 主要功能：<%= f.text_area(:description, :rows=>"3", :cols=>"60") %> </div>
+    <div class="description"> 主要功能：<%= f.text_area(:description, :rows=>"4", :cols=>"60") %> </div>
   </div>
   <div class="category-info">
     <div class="description"> 可预约时间：
@@ -64,13 +64,13 @@
 	
 		<br></br>
     </div>
-    <div class="description"> 预约价格：<%= f.number_field( :price, :size=>"60") %> </div>
+    <div class="description"> 预约价格：<%= f.number_field( :price, :size=>"60") %> 元/半小时</div>
     <div class="description"> 工作状态：<%= f.select(:status, %w{ 正常 故障 维修 报废 停用 }) %></div>
   </div>
   <div class="category-info">
-    <div class="description"> 购置时间：<%= f.date_field( :bought_time, :value=>@instrument.bought_time ) %></div>
-    <div class="description"> 购置金额：<%= f.number_field( :bought_price, :size=>"60") %></div>
-    <div class="description"> 所属单位：<%= f.text_field( :department_id, :size=>"80") %></div>
+    <div class="description"> 购置时间：<%= f.date_field( :bought_time, :value=>@instrument.bought_time ) %> </div>
+    <div class="description"> 购置金额：<%= f.number_field( :bought_price, :size=>"60") %> 元 </div>
+    <div class="description"> 所属单位：<%= f.collection_select( :department_id, @depts, :id, :name) %> </div>
     <div class="description"> 放置地点：<%= f.text_field( :place, :size=>"80") %></div>
   </div>
   <div class="actions">   

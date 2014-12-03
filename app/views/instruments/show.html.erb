@@ -17,13 +17,13 @@
         </div>
         <div class="category-info">
           <div class="description"> 可用时间：</div>
-          <div class="description"> 预约价格：<%= @instrument.price %></div>
+          <div class="description"> 预约价格：<%= number_to_currency(@instrument.price, :unit => "￥ ")  %></div>
           <div class="description"> 工作状态：<%= @instrument.status %></div>
         </div>
         <div class="category-info">
           <div class="description"> 购置时间：<%= @instrument.bought_time %></div>
-          <div class="description"> 购置金额：<%= @instrument.bought_price %></div>
-          <div class="description"> 所属单位：<%= @instrument.department_id %></div>
+          <div class="description"> 购置金额：<%= number_to_currency(@instrument.bought_price, :unit => "￥ ") %></div>
+          <div class="description"> 所属单位：<%= @department_name %></div>
           <div class="description"> 放置地点：<%= @instrument.place %></div>
         </div>
         <div> 
