@@ -1,5 +1,6 @@
 class Instrument < ActiveRecord::Base
-  belongs_to:departments  
+  belongs_to :departments  
+  has_many :orders_instruments, dependent: :destroy
 	
   validates_presence_of :name, :type_name, :description, :price, :image_url;
   validates_numericality_of :price

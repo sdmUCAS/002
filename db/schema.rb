@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204013629) do
+ActiveRecord::Schema.define(version: 20141205133230) do
 
   create_table "admins", force: true do |t|
     t.string   "login_name"
@@ -88,26 +88,30 @@ ActiveRecord::Schema.define(version: 20141204013629) do
   end
 
   create_table "orders", force: true do |t|
-    t.string   "order_id"
-    t.string   "username"
+    t.integer  "user_id"
     t.datetime "create_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orders_instruments", force: true do |t|
-    t.string   "order_id"
-    t.string   "instrument_id"
-    t.datetime "order_time"
+    t.integer  "order_id"
+    t.integer  "instrument_id"
+    t.string   "order_time"
     t.string   "part"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orders_states", force: true do |t|
-    t.string   "order_id"
+    t.integer  "order_id"
     t.string   "state"
     t.datetime "create_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uncheck_orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

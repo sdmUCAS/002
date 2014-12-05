@@ -35,21 +35,7 @@ class InstrumentsController < ApplicationController
   	  end
   	end
   end	 
-  		
-  def temp
-  	 if @instrument.monday = 1
-  	  if @instrument.morning != nil
-  	  	@array = @instrument.morning.split(',')
-      	@default_am_start_hour = @array[0].to_i
-      	@default_am_end_hour = @array[1].to_i
-      	for i in (@default_am_start_hour - 6)..(@default_am_end_hour - 6)
-      	  @avaliable[i][0] = 1
-  		end
-  	  end
-  	end
-  end
-
-
+  
   # GET /instruments/new
   def new
   	@depts = Department.all
@@ -129,6 +115,7 @@ class InstrumentsController < ApplicationController
   def create
     @instrument = Instrument.new(instrument_params)
     @instrument.image_url = upload
+    @instrument.user_id = User.find_by!("utype = '1'").id	# 默认新发布的仪器都是这个提供方的
     
     set_available_time
 
@@ -180,7 +167,7 @@ class InstrumentsController < ApplicationController
     File.open(@img_url, 'wb') do |file|
       file.write(@uploaded_io.read)
     end
-    return 'public/uploads/' + @uploaded_io.original_filename
+    return 'public/uploads/' +  Time.now.to_i.to_s + @uploaded_io.original_filename
   end
   
   # 根据view，设置可预约时间

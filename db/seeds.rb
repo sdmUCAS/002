@@ -7,7 +7,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-  Department.create({ name: '生物物理研究所', address: '北京生命科学大型仪器区域中心生物物理研究所8号楼2层', city: '北京' })
+		
+  Order.create({ user_id: 2, create_time: '2014-12-05 13:01:08' })
   
+  OrdersInstrument.create({ order_id: 2, instrument_id: 2, order_time: '2014-12-06', part: '7,8' })
+  
+  OrdersState.create({ order_id: 2, state: '提交订单', create_time: '2014-12-05 13:01:08' })
+  
+  Order.create({ user_id: 2, create_time: '2014-12-05 13:06:08' })
+  
+  OrdersInstrument.create({ order_id: 3, instrument_id: 2, order_time: '2014-12-05', part: '7,8' })
+  
+  OrdersState.create({ order_id: 3, state: '提交订单', create_time: '2014-12-05 13:06:08' })

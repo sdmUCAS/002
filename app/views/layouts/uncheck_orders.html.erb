@@ -8,7 +8,7 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= csrf_meta_tags %>
 
-<title>仪器设备管理</title>
+<title>订单管理</title>
 </head>
 <body>
 
@@ -16,14 +16,14 @@
 
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
   <!-- begin left -->
-  <div class="linktree"> <span > <a href="#">主页</a> &raquo; <%= link_to '仪器设备管理', instruments_path %> </span> </div>
+  <div class="linktree"> <span > <a href="#">主页</a> &raquo; <%= link_to '订单管理', instruments_path %> </span> </div>
   <div id="column-left">
     <div class="box">
       <div class="box-content" style="background:none;border:none;">
         <div class="box-category">
           <ul>
-            <li class="selected"><%= link_to '仪器设备管理', instruments_path %> </li>
-            <li>订单管理<a href="#" class="active"></a>
+            <li><%= link_to '仪器设备管理', instruments_path %> </li>
+            <li class="selected">订单管理<a href="#" class="active"></a>
               <ul>
                 <li> <a > - 待审核的订单</a> </li>
                 <li> <a > - 进行中的订单</a> </li>
