@@ -27,43 +27,47 @@
     <div class="description"> 主要功能：<%= f.text_area(:description, :rows=>"4", :cols=>"60") %> </div>
   </div>
   <div class="category-info">
-    <div class="description"> 可预约时间：
-    	<%= check_box_tag(:pet_dog) %>
+  	<div class="description"> 可预约时间：</div>
+    	<%= f.check_box(:monday, {:checked=>@check1}) %>
 		<%= label_tag( "周一") %>
-		<%= check_box_tag(:pet_cat) %>
+		<%= f.check_box(:tuesday, {:checked=>@check2}) %>
 		<%= label_tag("周二") %>
-		<%= check_box_tag(:pet_dog) %>
+		<%= f.check_box(:wednesday, {:checked=>@check3}) %>
 		<%= label_tag("周三") %>
-		<%= check_box_tag(:pet_cat) %>
+		<%= f.check_box(:thursday, {:checked=>@check4}) %>
 		<%= label_tag("周四") %>
-		<%= check_box_tag(:pet_dog) %>
+		<%= f.check_box(:friday, {:checked=>@check5}) %>
 		<%= label_tag( "周五") %>
-		<%= check_box_tag(:pet_cat) %>
+		<%= f.check_box(:saturday, {:checked=>@check6}) %>
 		<%= label_tag( "周六") %>
-		<%= check_box_tag(:pet_cat) %>
+		<%= f.check_box(:sunday, {:checked=>@check7}) %>
 		<%= label_tag( "周日") %>
 		<br></br>
-		<%= check_box_tag(:pet_dog) %>
+		
+  		<%= f.check_box('tmp_morning', {:checked=>@check8}) %>
 		<%= label_tag( "允许上午预约：") %>
-		<%= select_hour(6, start_hour: 6, end_hour: 12)%>： 
-		<%= select_hour(12, start_hour: 6, end_hour: 12)%>： 
-		
-		<br></br>
-		<%= check_box_tag(:pet_dog) %>
+		<%= select_hour(@default_am_start_hour, field_name:'am_start_hour', start_hour: 6, end_hour: 12)%>：
+		<%= select_minute(0, field_name:'am_start_minute', minute_step:60) %> 至 
+		<%= select_hour(@default_am_end_hour, field_name:'am_end_hour', start_hour: 6, end_hour: 12)%>：
+		<%= select_minute(0, field_name:'am_end_minute', minute_step:60) %>
+	    <br></br>
+	    
+	    <%= f.check_box('tmp_afternoon', {:checked=>@check9}) %>
 		<%= label_tag( "允许下午预约：") %>
-		<%= select_hour(12, start_hour: 12, end_hour: 18)%>： 
-	
-		<%= select_hour(18, start_hour:12, end_hour: 18)%>： 
-	
-		<br></br>
-		<%= check_box_tag(:pet_dog) %>
+		<%= select_hour(@default_pm_start_hour, field_name:'pm_start_hour', start_hour: 12, end_hour: 18)%>：
+		<%= select_minute(0, field_name:'pm_start_minute', minute_step:60) %> 至 
+		<%= select_hour(@default_pm_end_hour, field_name:'pm_end_hour', start_hour:12, end_hour: 18)%>：
+		<%= select_minute(0, field_name:'pm_end_minute',  minute_step:60) %>
+	    <br></br>
+	    
+	    <%= f.check_box('tmp_night', {:checked=>@check0}) %>
 		<%= label_tag( "允许晚上预约：") %>
-		<%= select_hour(18, start_hour: 18, end_hour: 23)%>： 
-		
-		<%= select_hour(23, start_hour: 18, end_hour: 23)%>： 
-	
-		<br></br>
-    </div>
+		<%= select_hour(@default_ng_start_hour, field_name:'ng_start_hour', start_hour: 18, end_hour: 22)%>：
+		<%= select_minute(0, field_name:'ng_start_minute', minute_step:60) %> 至 
+		<%= select_hour(@default_ng_end_hour, field_name:'ng_end_hour',  start_hour: 18, end_hour: 22)%>：
+		<%= select_minute(0, field_name:'ng_end_minute',  minute_step:60) %>
+  </div> 
+  <div class="category-info">
     <div class="description"> 预约价格：<%= f.number_field( :price, :size=>"60") %> 元/半小时</div>
     <div class="description"> 工作状态：<%= f.select(:status, %w{ 正常 故障 维修 报废 停用 }) %></div>
   </div>
@@ -76,5 +80,6 @@
   <div class="actions">   
   	<%= submit_tag '确认发布'%> 
   </div>
- </div>
+  <br></br>
+
 <% end %>

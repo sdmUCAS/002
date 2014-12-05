@@ -1215,19 +1215,7 @@
 		padding-bottom: 7px;
 		background: #eee;
 	}
-	.tab-content {
-	    	background-color: #fff;
-	    	border: 1px solid #BBBBBB;
-		box-shadow: 1px 1px 1px #FFFFFF inset;	
-		padding: 10px;
-		margin-bottom: 20px;
-		z-index: 2;
-		overflow: auto;   
-		color: #333;
-	    	font-size: 12px;
-	    	line-height: 1.9;
 	
-	}
 	/* box */
 	.box {
 		margin-bottom: 20px;
@@ -1475,8 +1463,6 @@
 	
 		margin-bottom: 0px;
 		border-radius: 3px;
-	
-	
 	}
 	
 	.tabs a {
@@ -1515,6 +1501,20 @@
 	.tabs a:hover {
 		color: #ff6619;	
 		text-decoration: none;
+	}
+	
+	.tab-content {
+	    	background-color: #fff;
+	    	border: 1px solid #BBBBBB;
+		box-shadow: 1px 1px 1px #FFFFFF inset;	
+		padding: 10px;
+		margin-bottom: 20px;
+		z-index: 2;
+		overflow: auto;   
+		color: #333;
+	    	font-size: 12px;
+	    	line-height: 1.9;
+	
 	}
 	
 	.product-info .cart .wishlist, .product-info .cart .compare {
@@ -1645,22 +1645,23 @@
 		width: 49%;
 	}
 	
-	/* cart */
-	.cart-info table {
+	/* appointment */
+	.appointment-info table {
 		width: 100%;
 		margin-bottom: 20px;
 		border-collapse: collapse;
-	
+		background-color: #FFFFFF;
+			text-align: center;
+
 	}
-	.cart-info td {    	
+	.appointment-info td {    	
 		background-color: #F4F4F4;
 	    	border: 1px solid #BBBBBB;
 		box-shadow: 1px 1px 1px #FFFFFF inset;	
 		padding:3px;
-	
 		padding: 7px;
 	}
-	.cart-info td a{
+	.appointment-info td a{
 		color:#444;
 		line-height:19px;
 		text-decoration:none;
@@ -1668,46 +1669,33 @@
 		text-shadow: 0 1px #fff;
 		padding:3px;
 	} 
-	
-	
-	.cart-info thead td {
+
+	.appointment-info thead td {
 		color: #4D4D4D;
 		font-weight: bold;
-		background-color: #F4F4F4;
+		
 	    	border: 1px solid #BBBBBB;
 		box-shadow: 1px 1px 1px #FFFFFF inset;
+		
 	}
-	.cart-info thead .remove, .cart-info thead .image {
-		text-align: center;
-	}
-	.cart-info thead .name, .cart-info thead .model {
-		text-align: left;
-	}
-	.cart-info thead .quantity, .cart-info thead .price, .cart-info thead .total {
-		text-align: right;
-	}
-	.cart-info tbody td {
-		vertical-align: top;
+	
+
+	.appointment-info tbody td {
+		vertical-align: middle;
 		border-bottom: 1px solid #DDDDDD;
 	}
-	.cart-info tbody .remove {
-		vertical-align: middle;
-	}
-	.cart-info tbody .remove, .cart-info tbody .image {
-		text-align: center;
-	}
-	.cart-info tbody .name, .cart-info tbody .model {
-		text-align: left;
-	}
-	.cart-info tbody .quantity, .cart-info tbody .price, .cart-info tbody .total {
-		text-align: right;
-	}
-	.cart-info tbody span.stock {
-		color: #F00;
-		font-weight: bold;
+	
+	.appointment-info tbody td.bold {
+		font-weight: bold;	
 	}
 	
-	
+	.appointment-info tbody td.avaliable {
+		background-color:#FFBD9D
+	}
+	.appointment-info tbody td.inavaliable {
+		background-color:#DDDDDD
+	}
+	/* end appointment */
 	
 	.login-content {
 		margin-bottom: 20px;
@@ -3187,3 +3175,4 @@
 		border: solid 1px #303030;
 		border-radius:3px;
 	}
+	

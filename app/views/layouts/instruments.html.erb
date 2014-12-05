@@ -1,9 +1,13 @@
 </em></em></em></em>
-<%= javascript_include_tag :defaults %>
 
 <html lang="en" dir="ltr">
 <head>
 <%= stylesheet_link_tag "css"%>
+
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+
 <title>仪器设备管理</title>
 </head>
 <body>

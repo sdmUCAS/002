@@ -8,12 +8,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+				 			 
   Admin.create({ login_name: 'admin', password: 'admin123' })
   
   Department.create([{ name: '信息工程研究所', address: '北京市海淀区闵庄路甲89号2号楼2014室', city: '北京' }, 
  					 { name: '中国科学院大学', address: '北京市怀柔区中国科学院大学教1-115', city: '北京' },
-  					 { name: '南京大学', address: '南宁京南京大学教1-115', city: '南京' }])
+  					 { name: '南京大学', address: '南宁京南京大学教1-115', city: '南京' },
+  					 { name: '生物物理研究所', address: '北京生命科学大型仪器区域中心生物物理研究所8号楼2层', city: '北京' }])
   
   User.create({ username: 'liying', password: 'liying', name: '李莹', sex: '女', uid: '45012222356589', 
   					phone: '13256895656', email: 'liying@ucas.cn', utype: '2', department_id: 1 })
@@ -40,3 +41,5 @@
   					{ department_id: 3, image_url: 'public/uploads/4.png', name: '实验室测设仪/', type_name: 'CR7', number: '0741', itype: '物理',
   						 bought_time: '2013-11-17', bought_price: 20000, place: '南宁京南京大学教1-315', status: '正常', 
   						 price: 300, description: '制备，分离。', user_id: 1}])
+  						 
+  Instrument.connection.execute('UPDATE `instruments` SET `monday`=`y')

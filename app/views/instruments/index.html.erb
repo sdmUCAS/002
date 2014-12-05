@@ -11,9 +11,9 @@
         <div class="right">
           <div class="price"><%= number_to_currency(instrument.price, :unit => "￥ ")  %></div>
           <div>
-          	<%= link_to (image_tag ("information.png"),:alt=>'查看') , instrument %> 
-            <%= link_to (image_tag ("edit.png"),:alt=>'编辑'), edit_instrument_path(instrument) %> 
-            <%= link_to (image_tag ("delete.png"),:alt=>'删除'), instrument, method: :delete, data: { confirm: '确定删除？'} %>  
+          	<%= link_to (image_tag ("information.png")) , instrument %> 
+            <%= link_to (image_tag ("edit.png")), edit_instrument_path(instrument) %> 
+            <%= link_to (image_tag ("delete.png")), instrument, method: :delete, data: { confirm: '确定删除？'} %>  
           </div>
         </div>
         <div class="name"><%= link_to (instrument.name + "-" + instrument.type_name) , instrument %> </div>

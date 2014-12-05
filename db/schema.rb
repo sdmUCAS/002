@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201025244) do
+ActiveRecord::Schema.define(version: 20141204013629) do
 
   create_table "admins", force: true do |t|
     t.string   "login_name"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 20141201025244) do
     t.decimal  "price",          precision: 12, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.string   "saturday"
+    t.string   "sunday"
+    t.string   "morning"
+    t.string   "afternoon"
+    t.string   "night"
   end
 
   create_table "instruments_comments", force: true do |t|
@@ -119,6 +129,17 @@ ActiveRecord::Schema.define(version: 20141201025244) do
   create_table "users_cards", force: true do |t|
     t.string "card_id"
     t.string "username"
+  end
+
+  create_table "valiable_times", force: true do |t|
+    t.string  "moday"
+    t.string  "tuesday"
+    t.string  "wednesday"
+    t.string  "tursday"
+    t.string  "friday"
+    t.string  "saturday"
+    t.string  "sunday"
+    t.integer "instrument_id"
   end
 
 end

@@ -15,9 +15,42 @@
           <div class="description"> 仪器类型：<%= @instrument.itype %></div>
           <div class="description"> 主要功能：<%= simple_format(@instrument.description)%></div>
         </div>
+	   <div class="category-info">
+	  	  <div class="description"> 可预约时间：</div>
+	  	  <div class="appointment-info">
+	        <table>
+	          <thead>
+	            <tr>
+	              <td > </td>
+	              <td >周一</td>
+	              <td >周二</td>
+	              <td >周三</td>
+	              <td >周四</td>
+	              <td >周五</td>
+	              <td >周六</td>
+	              <td >周日</td>
+	            </tr>
+	          </thead>
+	          <tbody>
+	          	<% for i in 0..(21-6)  %>
+		            <tr>
+		              <td class="bold"><%= InstrumentsController.show_init_available_time(i)%></td>
+		              
+		              <% for j in 0..6  %>
+		                <% if @avaliable[i][j] == 1 %>
+		                	<td class="avaliable"> 可预约 </td>
+		                <% else %>
+		              		<td class="inavaliable"> 不可预约 </td>
+		                <% end %>
+		              <% end %>
+		            </tr>
+		        <% end %>
+	          </tbody>
+	        </table>
+	      </div>
+	  </div>   
         <div class="category-info">
-          <div class="description"> 可用时间：</div>
-          <div class="description"> 预约价格：<%= number_to_currency(@instrument.price, :unit => "￥ ")  %></div>
+          <div class="description"> 预约价格：<%= number_to_currency(@instrument.price, :unit => "￥ ")  %>/每小时</div>
           <div class="description"> 工作状态：<%= @instrument.status %></div>
         </div>
         <div class="category-info">

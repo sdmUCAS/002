@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	resources :instruments do
 	  post :upload, on: :collection, as: :upload
 	end
+	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
   # Example resource route with options:
   #   resources :products do
-  #     member do
+  #     member doa
   #       get 'short'
   #       post 'toggle'
   #     end
