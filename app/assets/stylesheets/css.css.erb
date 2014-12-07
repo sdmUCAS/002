@@ -1018,6 +1018,10 @@
 		border-right: solid 2px #025881;
 	}
 	
+	.box-category > ul > li ul > li.selected {
+		border-right: solid 2px #025881;
+	}
+	
 	.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 	
 	.box-category > ul > li + li {
@@ -1163,6 +1167,57 @@
 		line-height:20px;
 	
 	}
+	
+	a.card_button {
+		-moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+		box-shadow:inset 0px 1px 0px 0px #97c4fe;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+		background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+		-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+		background-color:#3d94f6;
+		-moz-border-radius:3px;
+		-webkit-border-radius:3px;
+		border-radius:3px;
+		border:1px solid #337fed;  
+		font-weight: bold;
+	    	height:40px;
+	    	padding: 6px;
+	    	text-align: center;
+	    	width:90px;
+	    	margin-right:-0px;
+	    	color: #FFFFFF !important;
+	    	display: inline-block;
+	    	font-family: arial;
+	    	text-decoration: none;
+	    	text-shadow: 1px 1px 0 #1570CD;
+		line-height:40px;
+	
+	}
+	
+	a.card_disable_button {
+		background-color: #e0e0e0;
+	    	border: 1px solid #BBBBBB;
+		box-shadow: 1px 1px 1px #FFFFFF inset;	
+		list-style:none;
+	
+		font-weight: bold;
+	    	height:40px;
+	    	padding: 6px;
+	    	text-align: center;
+	    	width:90px;
+	    	margin-right:-0px;
+	    	color: #4F4F4F !important;
+	    	display: inline-block;
+	    	font-family: arial;
+	    	text-decoration: none;
+	    	
+		line-height:40px;
+	
+	}
+	
+	
+	
 	}
 	a.button span {
 		color: #eee;
@@ -2210,6 +2265,7 @@
 		float: right;
 		margin-left: 15px;	
 	}
+	
 	.product-list > div + div {
 	
 		padding-top: 16px;
@@ -2238,7 +2294,7 @@
 	}
 	
 	.product-list .first-line a.margin{
-		margin-left:70px;
+		margin-left:55px;
 	}
 	
 	.product-list .name {
@@ -2251,6 +2307,14 @@
 	.product-list .order {
 		font-size: 12px;
 		color: #222;
+		text-decoration: none;
+		padding-top: 6px;
+	}
+	
+	.product-list .order_state {
+		font-size: 12px;
+		font-weight:bold;
+		color: #e83d02;
 		text-decoration: none;
 		padding-top: 6px;
 	}
@@ -2476,6 +2540,29 @@
 		font-weight:bold;
 		line-height:25px;
 	}
+	
+	.product-info .desc_undone_order {
+		border-bottom: 1px solid #e7e7e7;
+		padding: 2px;
+		margin-bottom: 10px;
+		line-height:25px;
+		font-size: 12px;
+	}
+	
+	.product-info .state {
+		margin-left:55px;
+		
+		border-bottom: 1px solid #e7e7e7;
+		padding: 2px;
+		line-height:25px;
+		font-size: 12px;
+	}
+	
+	.product-info .desc_undone_order a {
+		font-weight:bold;
+		font-size: 12px;
+	}
+	
 	.product-info .description span {color: #333;}
 	.product-info .description a {color: #025881;text-decoration:none;font-weight:bold;}
 	

@@ -1,4 +1,4 @@
-class ModifyTableOrder < ActiveRecord::Migration
+;class ModifyTableOrder < ActiveRecord::Migration
   def change
   	drop_table "orders"
   	drop_table "orders_instruments"

@@ -61,4 +61,6 @@
   
   OrdersInstrument.create({ order_id: 3, instrument_id: 2, order_time: '2014-12-05', part: '7,8' })
   
-  OrdersState.create({ order_id: 3, state: '提交订单', create_time: '2014-12-05 13:06:08' })			 
+  OrdersState.create({ order_id: 3, state: '提交订单', create_time: '2014-12-05 13:06:08' })	
+  
+  Order.update_all "state_value = 1"		 

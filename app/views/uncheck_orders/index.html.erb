@@ -3,28 +3,36 @@
 <div id="content">
 <div class="product-list">
   <!-- begin a product -->
-  <% @uncheck_orders.each do |uncheck_order| %>
+  <% @uncheck_orders.each do |order| %>
   <div class="struct">
     <div class="struct-center">
       <div class="line"> 
         <div class="first-line "> 
-        	<a> 提交日期：<%= uncheck_order.create_time.to_s.split(' ')[0] %> </a> 
-        	<a class="margin"> 订单号：<%= uncheck_order.order_id.to_s %> </a> 
-        	<a class="margin"> 预约用户：<%= uncheck_order.user_name %> </a> 
+        	<a> 提交日期：<%= order.create_time.to_date.to_s  %> </a> 
+        	<a class="margin"> 订单号：<%=  order.id.to_s  %> </a> 
+        	<a class="margin"> 预约用户：<%= order.user.name  %> </a> 
     	</div>
     	<div class="right">
           <div> 
           	</br>    
-            <%= button_to "同意预约", { action: "agree_apointment", id: uncheck_order.order_id }, data: { confirm: '同意该用户的本次预约？'} %>        
+            <%= button_to "同意预约", { action: "agree_apointment", id: order.id }, data: { confirm: '同意该用户的本次预约？'} %>        
           </div>
         </div>
-        <div class="image"> <%= image_tag(uncheck_order.image_url, :size => "110x110")%></div>
-        <div class="order"> <%= uncheck_order.name %> &nbsp; <%=  uncheck_order.type_name %>&nbsp;-&nbsp;<%=  uncheck_order.number %> </div>
+        <div class="image"> <%= image_tag(order.orders_instruments.find(order.id).instrument.image_url, :size => "110x110")%></div>
+         <div class="order"> <%= order.orders_instruments.find(order.id).instrument.name %> 
+        			 &nbsp; <%= order.orders_instruments.find(order.id).instrument.type_name %>
+        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find(order.id).instrument.number %>  </div>
         </br>
-        <div class="order"> 预约日期：<%= uncheck_order.order_time %> &nbsp;&nbsp; <%=  uncheck_order.part %> </div>
-        <div class="order"> 预约用户：<%= uncheck_order.user_name + '(' + uncheck_order.department_name + ')' %> </div>
-        <div class="order"> 联系电话：<%= uncheck_order.phone %> </div>
-        <div class="order"> 电子邮件：<%= uncheck_order.email %> </div>
+        <div class="order">预约时间：
+        					<%= order.orders_instruments.find(order.id).order_time %> &nbsp; 
+        				 
+        				    <%= @part = order.orders_instruments.find(order.id).part.split(',')
+        				    	@part[0] + ':00 到 ' + @part[1] + ':00'
+        				    %> 	
+    				    	</div>      
+        <div class="order"> 预约用户：<%= order.user.name + '(' + order.user.department.name + ')' %>  </div>
+        <div class="order"> 联系电话：<%= order.user.phone %> </div>
+        <div class="order"> 电子邮件：<%= order.user.email %> </div>
         <div class="clearfix"></div>
       </div>
     </div>

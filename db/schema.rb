@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205133230) do
+ActiveRecord::Schema.define(version: 20141207113649) do
 
   create_table "admins", force: true do |t|
     t.string   "login_name"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20141205133230) do
     t.datetime "create_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "state_value"
   end
 
   create_table "orders_instruments", force: true do |t|
@@ -101,17 +102,13 @@ ActiveRecord::Schema.define(version: 20141205133230) do
     t.string   "part"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "money",         precision: 10, scale: 2
   end
 
   create_table "orders_states", force: true do |t|
     t.integer  "order_id"
     t.string   "state"
     t.datetime "create_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "uncheck_orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
