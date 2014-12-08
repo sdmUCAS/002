@@ -1,0 +1,68 @@
+<div class="container">
+<div class="check_form" >
+	<% if signed_in? %>
+	<div class="field" >
+	
+	<div>尊敬的用户： <%= current_user.name %></div>
+	
+	<h2>您的订单如下</h2>
+	<table class="orderTable" id="orderTable" data-spm="9">
+          <colgroup>
+            <col class="bianhao" />
+            <col class="xiangmu" />
+            <col class="time" />
+            <col class="preprice" />
+            <col class="operate" />
+            <col class="trade-status" />
+            <col class="paid_price" />
+          </colgroup>
+
+          <thead>
+            <tr class="col-name">
+              <th>预约单号</th>
+
+              <th>预约项目</th>
+
+              <th>预约时间</th>
+
+              <th>估价</th>
+              
+              <th>预约操作</th>
+              
+              <th>订单状态</th>
+              
+              <th>实付款</th>
+            </tr>
+            </thead>
+            <tbody>
+          	<% @orders.each do |order| %>
+            <tr class="col-name">
+            	<% order.line_items.each do |item| %>
+              <td>201412051710</td>
+
+              <td>
+ 									<li><%= item.quantity %>&times;<%= item.instrument.name  %></li>
+							</td>
+
+              <td>
+              	<%= item.orderTime %><br/>
+							</td>
+
+              <td><%= number_to_currency(item.total_price) %></td>
+              
+              <td></td>
+              
+              <td></td>
+              
+              <td></td>
+              <% end %>
+            </tr>
+            <% end %>
+            </tbody>
+			</table>
+
+<% else %>
+	<h2>请登录之后查看您的订单</h2>
+<% end %>
+</div>
+</div>

@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'welcome/login'
+  post 'welcome/login'
+  post 'welcome/show'
+  get 'welcome/index'
+  get 'welcome/show'
+  get 'welcome/order'
+  post 'welcome/create'
+  post 'sessions/signup', to: 'users#new'
+  get 'sessions/signin', to: 'sessions#new'
+  get 'sessions/signout', to: 'sessions#destroy', via: :delete
+  post 'sessions/add_to_cart', to: 'sessions#add_to_cart'
+  post 'orders/new' , to: 'orders#create'
+
+  resources :instruments,:users,:sessions,:orders,:line_items,:carts
+  
   resources :undone_orders do
   	post :startup, :on => :collection, as: :startup
   	post :closedown, on: :collection, as: :closedown
@@ -16,14 +31,11 @@ Rails.application.routes.draw do
   resources :instruments do
 	post :upload, on: :collection, as: :upload
   end
-	
-	
-	
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -36,7 +48,7 @@ Rails.application.routes.draw do
 
   # Example resource route with options:
   #   resources :products do
-  #     member doa
+  #     member do
   #       get 'short'
   #       post 'toggle'
   #     end

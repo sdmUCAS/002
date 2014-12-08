@@ -1,0 +1,114 @@
+
+<div class="container">
+<div id="content">
+	<div class="block-white">
+		<div class="block-content">
+		</div>
+		<div class="separator">
+		</div>
+		<div class="block-content">
+			<div class="product-info">
+				<div class="left">
+					<div class="image">
+						<a href="#" title="iMac">
+							<%= image_tag(@instrument.image_url, :size => "228x228") %>
+						</a>
+					</div>
+				</div>
+				<div class="right">
+					<div id="tab-information" class="tab-content">
+						<div id="information">
+						</div>
+						<div class="description">
+							<span>
+								»&nbsp;仪器名称:
+							</span>
+							<a href="#">
+								<%= @instrument.name %>
+							</a>
+							<br>
+							<span>
+								»&nbsp;仪器型号:
+							</span>
+								<%= @instrument.type_name %>
+							<br>
+							<span>
+								»&nbsp;仪器分类:
+							</span>
+								<%= @instrument.itype %>
+							<br>
+							<span>
+								»&nbsp;仪器描述:
+							</span>
+								<%= @instrument.description %>
+						</div>
+						<div class="price">
+							<span class="price-new">
+								价格：$<%= @instrument.price %> /半小时
+							</span>
+						</div>
+						<br>
+			<div class="category-info">
+	  	  <div class="description"> 可预约时间：</div>
+	  	  <div class="appointment-info">
+	        <table id="orderTable" class="orderTable">
+	          <thead>
+	            <tr>
+	              <th > </th>
+	              <th >周一</th>
+	              <th >周二</th>
+	              <th >周三</th>
+	              <th >周四</th>
+	              <th >周五</th>
+	              <th >周六</th>
+	              <th >周日</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	          	<% for i in 0..(21-6)  %>
+		            <tr>
+		              <td class="bold"><%= WelcomeController.show_init_available_time(i)%></td>
+		              
+		              <% for j in 0..6  %>
+		                <% if @avaliable[i][j] == 1 %>
+		                	<td class="avaliable"><input type="checkbox" onclick="addOrderTime(this)">可预约</input></td>
+		                <% else %>
+		                
+		              	<td class="inavaliable"><a href="#" data-background-color="#990000">已占用</a></td>
+		              	
+		                <% end %>
+		              <% end %>
+		            </tr>
+		        <% end %>
+		         </tbody>
+	        </table>
+	        <%= form_for :line_item do |f| %>
+		      
+	        <div>
+	        	<div class="description">已预约时间：</div>
+	        	<div><%= f.text_area(:orderTime, cols: 50, rows: 10,id: 'order_time')%></div>
+	        	
+	        </div>
+	        <div>
+	        	
+	        </div>
+	      </div>
+	  		</div>
+	  		
+						<div class="cart">
+							<div>
+								<br/>
+								<%= f.submit "加入购物车"%>
+							</div>
+						</div>
+						<% end %>
+						<%= params.inspect %>
+					</div>
+					<div class="price">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+	<% if notice %>
+	<p id="notice" ><%= notice %></p>
+	<% end %>
+	<% if @cart.line_items.count>0 %>
+	<h2>您的购物车</h2>
+	<table class="orderTable">
+		<thead>
+			<th>预约项目</th>
+			<th>预约时间</th>
+			<th>预约估价</th>
+		</thead>
+	<% @cart.line_items.each do |item| %>
+ 	<tr>
+ 		<td><li><%= item.quantity %>&times;<%= item.instrument.name  %></li></td>
+ 		<td><%= item.orderTime  %></td>
+ 		<td class="item_price" >&nbsp;&nbsp;&nbsp;&nbsp;<%= number_to_currency(item.total_price) %></td>
+ 	</tr>
+	<% end %>
+	</table>
+	
+	
+ 	<div class="total_line" >
+ 		<ul>共计:&nbsp;&nbsp;<%= number_to_currency(@cart.total_price) %></ul>
+	</div>
+	
+	<div class="button_group">
+		<%= button_to "去结算" , new_order_path, method: :get %>
+		<%= button_to '清空购物车' , @cart, method: :delete,data: { confirm: '你确定吗?' } %>
+	</div>
+	
+	<% else %>
+		<h2>您的购物车是空的，请您返回继续购物！！</h2>
+  <% end %>
+  
+  <%= link_to "返回继续购物" , welcome_index_path %>	
+</div>

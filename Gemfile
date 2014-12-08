@@ -1,6 +1,7 @@
-#source 'https://rubygems.org'
 source 'http://ruby.taobao.org/'
 
+
+gem 'will_paginate', '~> 3.0.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
@@ -37,11 +38,3 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
-Encoding.default_external = Encoding::UTF_8
-Encoding.default_internal = Encoding::UTF_8
-
-## Gemfile for Rails 3+, Sinatra, or Merb
-gem 'will_paginate', '~> 3.0.5'
-
-gem 'jquery-rails'

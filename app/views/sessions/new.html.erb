@@ -1,0 +1,31 @@
+
+<div class="container">
+	<div id="loginPic">
+		
+	</div>
+	<div id="loginForm">
+	<h1>欢迎使用仪器共享平台</h1>
+<%= form_for :session, url:sessions_path do |f| %>
+  
+  		<div class="field">
+    		<%= f.label :登录名 %><br>
+    		<%= f.text_field :username %>
+  		</div>
+  		<div class="field">
+    		<%= f.label :密码 %><br>
+    		<%= f.password_field :password %>
+  		</div>
+  		<a href="../../oc.spthemes.us/index.php@route=account_2Fforgotten">忘记密码</a><br />
+  		<%= f.submit "登录", :class => "btn btn-large btn-primary" %> 
+ <% end %>
+ </div> 
+  		
+</div>
+
+
+
+
+
+
+
+

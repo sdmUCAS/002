@@ -23,7 +23,8 @@ class CreateDb < ActiveRecord::Migration
 	  end
 	
 	  create_table "departments", force: true do |t|
-	    t.string   "name"		# t.string   "department_id"
+	    t.string   "name"		
+	    t.string   "department_id"
 	    t.string   "address"
 	    t.string   "city"
 	    t.datetime "created_at"

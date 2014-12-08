@@ -1,0 +1,92 @@
+<div class="container">
+<div class="check_form" >
+<fieldset>
+	<%= render 'form' %>
+	<% if signed_in? %>
+	<%= form_for :order , url: {action: "create"} do |f| %>
+	<div class="field" >
+	
+	<div>尊敬的用户： <%= current_user.name %></div>
+	<%= f.hidden_field(:user_id,value: current_user.id )%>
+	<h2>您此次订单如下</h2>
+	<table class="orderTable" id="orderTable" data-spm="9">
+          <colgroup>
+            <col class="bianhao" />
+            <col class="xiangmu" />
+            <col class="time" />
+            <col class="preprice" />
+            <col class="operate" />
+            <col class="trade-status" />
+            <col class="paid_price" />
+          </colgroup>
+
+          <thead>
+            <tr class="col-name">
+              <th>预约单号</th>
+
+              <th>预约项目</th>
+
+              <th>预约时间</th>
+
+              <th>估价</th>
+              
+              <th>预约操作</th>
+              
+              <th>订单状态</th>
+              
+              <th>实付款</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="col-name">
+              <td>201412051710</td>
+
+              <td>
+              	<div>
+              		<% @cart.line_items.each do |item| %>
+ 									<li><%= item.quantity %>&times; <%= item.instrument.name  %><%= number_to_currency(item.total_price) %></li><br/>
+ 									<% end %>
+ 								</div>
+							</td>
+
+              <td><div>
+              		<% @cart.line_items.each do |item| %>
+ 									<li><%= item.orderTime %></li><br/>
+ 									<% end %>
+ 								</div>
+							</td>
+
+              <td><%= number_to_currency(@cart.total_price) %></td>
+              
+              <td></td>
+              
+              <td></td>
+              
+              <td></td>
+            </tr>
+            </tbody>
+			</table>
+			
+	<%= f.submit "提交订单" %>
+	
+	<% end %>
+	
+	 
+	
+	
+ 
+ 		
+ 		
+
+<% else %>
+	<h2>请登录之后再进行结算</h2>
+<% end %>
+
+
+
+            
+
+
+</fieldset>
+</div>
+</div>

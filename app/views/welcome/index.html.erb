@@ -1,0 +1,145 @@
+  <div style="width:1000px;margin:0 auto;">
+    <div id="cart">
+      <div class="heading">
+        <a style="padding:8px;margin-left:-14px;">购物车</a> <span style="font-size:14px;color:#fff;">?</span> <a><span id="cart_total">0 item(s) - $0.00</span></a>
+      </div>
+
+      <div class="content"></div>
+    </div>
+
+    <div id="search">
+      <div class="button-search"></div><input type="text" name="filter_name" value="Search" onclick="this.value = '';" onkeydown="this.style.color = '#888';" />
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="logo_img">
+      <a href="#"><%=image_tag "logo.png"%></a>
+    </div>
+  </div>
+
+  <div id="menu" class="secMenu">
+    <ul>
+      <li>
+        <a href="#">评价</a>
+      </li>
+
+      <li>
+        <a href="#">预约量</a>
+      </li>
+
+      <li>
+        <a href="#">价格</a>
+      </li>
+      
+      <li style="float:right;">
+        《选择按此条件排序
+      </li>
+    </ul>
+  </div><script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js">
+</script><script type="text/javascript" src="slider/jquery.nivo.slider.pack.js">
+</script><script type="text/javascript">
+//<![CDATA[
+        $(window).load(function() {
+            $('#slider').nivoSlider();
+        });
+  //]]>
+  </script>
+
+  <div class="container">
+    <div id="selectionbar">
+      <div class="box">
+        <div class="box-heading_left">
+          筛选条件
+        </div>
+
+        <div class="box-content" style="background:none;border:none;">
+          <div class="box-category">
+            <ul>
+              <li>
+                <a href="#">所在地点</a>
+
+                <ul>
+                  <li><a href="#">- PC (0)</a></li>
+
+                  <li><a href="#">- Mac (1)</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="#">所属单位</a>
+
+                <ul>
+                  <li><a href="#">- Macs (0)</a></li>
+
+                  <li><a href="#">- Windows (0)</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="#">仪器种类</a>
+
+                <ul>
+                  <li><a href="#">- Mice and Trackballs (0)</a></li>
+
+                  <li><a href="#">- Monitors (2)</a></li>
+
+                  <li><a href="#">- Printers (0)</a></li>
+
+                  <li><a href="#">- Scanners (0)</a></li>
+
+                  <li><a href="#">- Web Cameras (0)</a></li>
+                </ul>
+              </li>
+
+              <li><a href="#">仪器用途</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="instrumentlist">
+
+      <div class="box-product">
+      	<% @instruments.each do |instrument| %>
+        <div>
+          <div class="showhim">
+            <div class="image">
+              <a href="#"><%= image_tag(instrument.image_url, :size => "228x228") %></a>
+
+              <div class="showme">
+                <div class="description_featured" style="min-height:50px;">
+                  <p><%= instrument.description %></p>
+                </div>
+              </div>
+
+              <div class="name">
+                <%= link_to instrument.name, controller: 'welcome',action: 'show',id: instrument %>
+              </div>
+
+              <div class="priced">
+                <ul>
+                  <li><%= instrument.price %></li>
+
+                  <li><%= button_to "加入购物车", {controller: 'line_items',action: 'create',id: instrument} %></li>
+                </ul>
+              </div>
+
+              <div style="margin-top:24px;"></div>
+            </div>
+
+            <div class="showme"></div>
+          </div>
+        </div>
+        <% end %>
+        <%= will_paginate @instruments, :prev_label => '上一页', :next_label => '下一页' %>
+        
+
+        
+  	  </div>
+  	  <br />
+
+  
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+<%= stylesheet_link_tag "css"%>
+<title>仪器设备管理</title>
+</head>
+
+<body>
+<div class="menu">
+<ul>
+<li style="width:0px;"><a></a></li>
+<li><a><a href="/welcome/index" class="cart">主页</a></li>
+<li><a href="#" class="cart">我的购物车</a></li>
+<li><a href="/welcome/order" class="cart">我的订单</a></li>
+<li><a href="/instruments" class="account">仪器提供方</a></li>
+<li><a class="checkout">退出</a></li>
+<% if signed_in? %>
+	<li style="float:right;"><a><%= link_to "我的共享", current_user %></a></li>
+<% else %>
+	<li style="float:right;"><a href="/instrumentShare/signin" class="login">登录</a></li>
+	<li style="float:right;"><a><%= link_to '注册', new_user_path %></a></li>
+<% end %>     
+</ul>
+</div>
+
+<%= yield :layout %>
+</body>
+</html>
+
+

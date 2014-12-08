@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207113649) do
+ActiveRecord::Schema.define(version: 20141208122312) do
 
   create_table "admins", force: true do |t|
     t.string   "login_name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20141207113649) do
     t.datetime "updated_at"
   end
 
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.string   "cotent"
     t.datetime "created_at"
@@ -36,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141207113649) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
+    t.string   "department_id"
     t.string   "address"
     t.string   "city"
     t.datetime "created_at"
@@ -87,6 +93,20 @@ ActiveRecord::Schema.define(version: 20141207113649) do
     t.datetime "updated_at"
   end
 
+  create_table "line_items", force: true do |t|
+    t.integer  "instrument_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",      default: 1
+    t.integer  "order_id"
+    t.string   "orderTime"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["instrument_id"], name: "index_line_items_on_instrument_id"
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.datetime "create_time"
@@ -113,6 +133,11 @@ ActiveRecord::Schema.define(version: 20141207113649) do
     t.datetime "updated_at"
   end
 
+  create_table "sessions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
@@ -125,7 +150,10 @@ ActiveRecord::Schema.define(version: 20141207113649) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "department_id"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "users_cards", force: true do |t|
     t.string "card_id"
