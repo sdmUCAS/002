@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post 'welcome/login'
   post 'welcome/show'
   get 'welcome/index'
-  get 'instrument', to: 'welcome#index'
+  get 'iss', to: 'welcome#index'
   get 'welcome/show'
   get 'welcome/order'
   post 'welcome/create'
