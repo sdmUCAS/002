@@ -18,15 +18,15 @@
             <%= button_to "同意预约", { action: "agree_apointment", id: order.id }, data: { confirm: '同意该用户的本次预约？'} %>        
           </div>
         </div>
-        <div class="image"> <%= image_tag(order.orders_instruments.find(order.id).instrument.image_url, :size => "110x110")%></div>
-         <div class="order"> <%= order.orders_instruments.find(order.id).instrument.name %> 
-        			 &nbsp; <%= order.orders_instruments.find(order.id).instrument.type_name %>
-        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find(order.id).instrument.number %>  </div>
+        <div class="image"> <%= image_tag(order.orders_instruments.find_by_order_id(order.id).instrument.image_url, :size => "110x110")%></div>
+         <div class="order"> <%= order.orders_instruments.find_by_order_id(order.id).instrument.name %> 
+        			 &nbsp; <%= order.orders_instruments.find_by_order_id(order.id).instrument.type_name %>
+        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find_by_order_id(order.id).instrument.number %>  </div>
         </br>
         <div class="order">预约时间：
-        					<%= order.orders_instruments.find(order.id).order_time %> &nbsp; 
+        					<%= order.orders_instruments.find_by_order_id(order.id).order_time %> &nbsp; 
         				 
-        				    <%= @part = order.orders_instruments.find(order.id).part.split(',')
+        				    <%= @part = '7,8'.split(',')
         				    	@part[0] + ':00 到 ' + @part[1] + ':00'
         				    %> 	
     				    	</div>      
