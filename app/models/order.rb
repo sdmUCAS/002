@@ -1,3 +1,4 @@
+#encoding=utf-8
 class Order < ActiveRecord::Base
 	belongs_to :user
 	has_many :line_items
@@ -11,6 +12,9 @@ class Order < ActiveRecord::Base
 			orders_instruments << OrdersInstrument.new(:instrument_id=>item.instrument_id,:money=>item.total_price)
 			line_items << item
 		end
+	end
+	def add_state
+		orders_states << OrdersState.new(:state=>'提交订单',:create_time=>Time.now)
 	end
 	def total_price
 		total_price=0

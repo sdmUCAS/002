@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208122312) do
+ActiveRecord::Schema.define(version: 20141209170746) do
 
   create_table "admins", force: true do |t|
     t.string   "login_name"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20141208122312) do
   end
 
   create_table "orders_states", force: true do |t|
-    t.string   "order_id"
+    t.integer  "order_id"
     t.string   "state"
     t.datetime "create_time"
     t.datetime "created_at"

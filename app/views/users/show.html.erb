@@ -2,42 +2,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>UserName:</strong>
+  <strong>用户名:</strong>
   <%= @user.username %>
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Name:</strong>
+  <strong>姓  名:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Sex:</strong>
+  <strong>性  别:</strong>
   <%= @user.sex %>
 </p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @user.uid %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
+  <strong>联系电话:</strong>
   <%= @user.phone %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>邮  箱:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong>用户类型:</strong>
   <%= @user.utype %>
 </p>
 <%= link_to '修改信息', edit_user_path(@user) %> |

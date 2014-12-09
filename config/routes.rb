@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'sessions/signout', to: 'sessions#destroy', via: :delete
   post 'sessions/add_to_cart', to: 'sessions#add_to_cart'
   post 'orders/new' , to: 'orders#create'
+  
 
   resources :users,:sessions,:orders,:line_items,:carts
 

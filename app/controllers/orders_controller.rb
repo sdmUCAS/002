@@ -45,9 +45,9 @@ class OrdersController < ApplicationController
   def create
 		@order = Order.new(:create_time=>Time.now,:state_value=>1)
 		userid = params[:order][:user_id]
+		@order.add_state
 		@order.user_id = userid
 		@order.add_line_items_from_cart(@cart)
-		
 		respond_to do |format|
 			if @order.save
 				Cart.destroy(session[:cart_id])
@@ -84,6 +84,11 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  def pay
+  	
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.

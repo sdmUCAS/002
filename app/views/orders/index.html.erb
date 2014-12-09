@@ -24,6 +24,7 @@
         		<% end %>
         	</div>
         	<% if order.orders_states.find_by_sql("SELECT * FROM orders_states WHERE order_id = " + order.id.to_s + " ORDER BY create_time DESC").first.state.index('提交结算')%>
+        	
         	<div class="pay_order">
         		<%= button_to '付款'%>
         	</div>
