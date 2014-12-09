@@ -1,6 +1,7 @@
 class Instrument < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
+  has_many :orders_instruments, dependent: :destroy
   validates_presence_of :name, :type_name, :image_url, :description, :price
   validates_numericality_of :price
   

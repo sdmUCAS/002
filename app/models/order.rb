@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
 	def add_line_items_from_cart(cart)
 		cart.line_items.each do |item|
 			item.cart_id = nil
+			orders_instruments << OrdersInstrument.new(:instrument_id=>item.instrument_id,:money=>item.total_price)
 			line_items << item
 		end
 	end

@@ -47,11 +47,12 @@ class OrdersController < ApplicationController
 		userid = params[:order][:user_id]
 		@order.user_id = userid
 		@order.add_line_items_from_cart(@cart)
+		
 		respond_to do |format|
 			if @order.save
 				Cart.destroy(session[:cart_id])
 				session[:cart_id] = nil
-				format.html { redirect_to orders_path, notice: 'Thank you for your order.' }
+				format.html { redirect_to orders_path }
 				format.json { render action: 'show' , status: :created,location: @order }
 			else
 				format.html { render action: 'new' }
