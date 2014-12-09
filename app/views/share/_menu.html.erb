@@ -1,7 +1,7 @@
 <div class="menu">
   <ul>
     <li style="width:0px;"><a></a></li>
-    <li><a class="home"><%=image_tag "home.png"%>主页</a></li>
+    <li><a href="/welcome/index"><%=image_tag "home.png"%>主页</a></li>
     <li> <%=image_tag "cart.png"%><%= link_to "我的购物车", controller: 'carts' ,action: 'show', id: current_cart %></li>
     <li><a href="/orders" class="cart"><%=image_tag "wish_list.png"%>我的订单</a></li>
     <li><a href="/instruments" class="account"><%=image_tag "account.png"%>仪器提供方</a></li>

@@ -1,14 +1,16 @@
   <div style="width:1000px;margin:0 auto;">
     <div id="cart">
       <div class="heading">
-        <a style="padding:8px;margin-left:-14px;">购物车</a> <span style="font-size:14px;color:#fff;">?</span> <a><span id="cart_total">0 item(s) - $0.00</span></a>
+        <a style="padding:8px;margin-left:-14px;">购物车</a> 
+        <span style="font-size:14px;color:#fff;">?</span> 
+        <a><span id="cart_total">0 item(s) - $0.00</span></a>
       </div>
 
       <div class="content"></div>
     </div>
 
     <div id="search">
-      <div class="button-search"></div><input type="text" name="filter_name" value="Search" onclick="this.value = '';" onkeydown="this.style.color = '#888';" />
+      <input type="text" name="filter_name" value="Search" onclick="this.value = '';" onkeydown="this.style.color = '#888';" />
     </div>
   </div>
 
@@ -36,9 +38,10 @@
         《选择按此条件排序
       </li>
     </ul>
-  </div><script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js">
-</script><script type="text/javascript" src="slider/jquery.nivo.slider.pack.js">
-</script><script type="text/javascript">
+  </div>
+  <script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
+  <script type="text/javascript">
 //<![CDATA[
         $(window).load(function() {
             $('#slider').nivoSlider();
@@ -100,7 +103,6 @@
     </div>
 
     <div id="instrumentlist">
-
       <div class="box-product">
       	<% @instruments.each do |instrument| %>
         <div>
@@ -134,12 +136,7 @@
         </div>
         <% end %>
         <%= will_paginate @instruments, :previous_label => '上一页', :next_label => '下一页' %>
-        
-
-        
   	  </div>
   	  <br />
-
-  
 </body>
 </html>
