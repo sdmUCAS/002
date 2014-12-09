@@ -18,16 +18,16 @@
           </div>
         </div>
 
-        <div class="image"> <%= image_tag( order.orders_instruments.find(order.id).instrument.image_url, :size => "100x100") %> </div>
-        <div class="order"> <%= order.orders_instruments.find(order.id).instrument.name %> 
-        			 &nbsp; <%= order.orders_instruments.find(order.id).instrument.type_name %>
-        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find(order.id).instrument.number %> 
+        <div class="image"> <%= image_tag( order.orders_instruments.find_by_order_id(order.id).instrument.image_url, :size => "100x100") %> </div>
+        <div class="order"> <%= order.orders_instruments.find_by_order_id(order.id).instrument.name %> 
+        			 &nbsp; <%= order.orders_instruments.find_by_order_id(order.id).instrument.type_name %>
+        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find_by_order_id(order.id).instrument.number %> 
     	</div>
         </br>
         <div class="order"> <%= order.user.name + '(' + order.user.department.name + ')' %> &nbsp;&nbsp; &nbsp;
-        					<%= order.orders_instruments.find(order.id).order_time %> &nbsp; 
+        					<%= order.orders_instruments.find_by_order_id(order.id).order_time %> &nbsp; 
         				 
-        				    <%= @part = order.orders_instruments.find(order.id).part.split(',')
+        				    <%= @part = '7,8'.part.split(',')
         				    	@part[0] + ':00 到 ' + @part[1] + ':00'
         				    %> 	
     				    	</div>      
