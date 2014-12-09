@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-		@order = Order.new
+		@order = Order.new(:create_time=>Time.now,:state_value=>1)
 		userid = params[:order][:user_id]
 		@order.user_id = userid
 		@order.add_line_items_from_cart(@cart)
