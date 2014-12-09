@@ -21,9 +21,7 @@
             <tr class="col-name">
               <th>预约单号</th>
 
-              <th>预约项目</th>
-
-              <th>预约时间</th>
+              <th>预约项目/预约时间</th>
 
               <th>估价</th>
               
@@ -37,25 +35,30 @@
             <tbody>
           	<% @orders.each do |order| %>
             <tr class="col-name">
-            	<% order.line_items.each do |item| %>
-              <td>201412051710</td>
-
-              <td>
- 									<li><%= item.quantity %>&times;<%= item.instrument.name  %></li>
-							</td>
-
-              <td>
-              	<%= item.orderTime %><br/>
-							</td>
-
-              <td><%= number_to_currency(item.total_price) %></td>
+            	<td><%= order.id %></td>
+            	
+            	<td class="orderDetail">
+            		<table class="detail">
+            			
+            			<% order.line_items.each do |item| %>
+            			<tr>
+          					<td><li><%= item.quantity %>&times;<%= item.instrument.name  %></li></td>
+          					
+          					<td><%= item.orderTime %></td>
+            			
+              		<tr/>
+              		<% end %>
+              	</table>
+              </td>
+              
+              <td><%= order.total_price %></td>
               
               <td></td>
               
               <td></td>
               
               <td></td>
-              <% end %>
+              
             </tr>
             <% end %>
             </tbody>

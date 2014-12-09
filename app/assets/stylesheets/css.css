@@ -3417,3 +3417,11 @@ border-spacing: 0;
 		background-color:#DDDDDD
 	}
 	/* end appointment */
+	
+	.orderDetail {
+		width:200px;
+	}
+	
+	.detail {
+		border:0;
+	}
