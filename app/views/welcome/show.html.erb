@@ -1,4 +1,4 @@
-<div/>
+
 <div class="container">
 <div id="content">
 	<div class="block-white">
@@ -44,7 +44,7 @@
 						</div>
 						<div class="price">
 							<span class="price-new">
-								价格�?<%= @instrument.price %> /半小�?
+								价格：$<%= @instrument.price %> /半小时
 							</span>
 						</div>
 						<br>
@@ -71,10 +71,10 @@
 		              
 		              <% for j in 0..6  %>
 		                <% if @avaliable[i][j] == 1 %>
-		                	<td class="avaliable"><input type="checkbox" onclick="addOrderTime(this)">可预�?/input></td>
+		                	<td class="avaliable"><input type="checkbox" onclick="addOrderTime(this)">可预约</input></td>
 		                <% else %>
 		                
-		              	<td class="inavaliable"><a href="#" data-background-color="#990000">已占�?/a></td>
+		              	<td class="inavaliable"><a href="#" data-background-color="#990000">已占用</a></td>
 		              	
 		                <% end %>
 		              <% end %>
@@ -98,7 +98,7 @@
 						<div class="cart">
 							<div>
 								<br/>
-								<%= f.submit "加入购物�?, {:action=>'create',:instrument_id =>@instrument.id} %>
+								<%= f.submit "加入购物车", {:action=>'create',:instrument_id =>@instrument.id} %>
 							</div>
 						</div>
 						<% end %>
