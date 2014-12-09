@@ -6,63 +6,52 @@
 	<div>尊敬的用户： <%= current_user.name %></div>
 	
 	<h2>您的订单如下</h2>
-	<table class="orderTable" id="orderTable" data-spm="9">
-          <colgroup>
-            <col class="bianhao" />
-            <col class="xiangmu" />
-            <col class="time" />
-            <col class="preprice" />
-            <col class="operate" />
-            <col class="trade-status" />
-            <col class="paid_price" />
-          </colgroup>
+	
+	<div class="product-list">
+  <!-- begin a product -->
+  <% @orders.each do |order| %>
+  <div class="struct">
+    <div class="struct-center">
+      <div class="line"> 
+        <div class="first-line "> 
+        	<a> 订单号：<%= order.id.to_s %> </a> 
+        	<a class="margin"> 提交日期：<%= order.create_time.to_date.to_s %> </a> 
+    	</div>
+    	<div class="right">
+          <div class="order_state"> 
+        		<% order.orders_states.each do |state|%>
+        			<%= state.state  %>----<%= state.create_time.to_s(:db)%><br/>
+        		<% end %>
+        	</div>
+        	<% if order.orders_states.find_by_sql("SELECT * FROM orders_states WHERE order_id = " + order.id.to_s + " ORDER BY create_time DESC").first.state.index('提交结算')%>
+        	<div class="pay_order">
+        		<%= button_to '付款'%>
+        	</div>
+        	<% end %>
+        </div>
 
-          <thead>
-            <tr class="col-name">
-              <th>预约单号</th>
-
-              <th>预约项目/预约时间</th>
-
-              <th>估价</th>
-              
-              <th>预约操作</th>
-              
-              <th>订单状态</th>
-              
-              <th>实付款</th>
-            </tr>
-            </thead>
-            <tbody>
-          	<% @orders.each do |order| %>
-            <tr class="col-name">
-            	<td><%= order.id %></td>
-            	
-            	<td class="orderDetail">
-            		<table class="detail">
-            			
-            			<% order.line_items.each do |item| %>
-            			<tr>
-          					<td><li><%= item.quantity %>&times;<%= item.instrument.name  %></li></td>
-          					
-          					<td><%= item.orderTime %></td>
-            			
-              		<tr/>
-              		<% end %>
-              	</table>
-              </td>
-              
-              <td><%= order.total_price %></td>
-              
-              <td></td>
-              
-              <td></td>
-              
-              <td></td>
-              
-            </tr>
-            <% end %>
-            </tbody>
-			</table>
+        <div class="image"> <%= image_tag( order.orders_instruments.find_by_order_id(order.id).instrument.image_url, :size => "100x100") %> </div>
+        <div class="order"> <%= order.orders_instruments.find_by_order_id(order.id).instrument.name %> 
+        			 &nbsp; <%= order.orders_instruments.find_by_order_id(order.id).instrument.type_name %>
+        			 &nbsp;-&nbsp;<%=  order.orders_instruments.find_by_order_id(order.id).instrument.number %> 
+    	</div>
+        </br>
+        <div class="order"> <%= order.user.name + '(' + order.user.department.name + ')' %> &nbsp;&nbsp; &nbsp;
+        					<%= order.orders_instruments.find_by_order_id(order.id).order_time %> &nbsp; 
+        				 
+        				    <%= @part = '7,8'.split(',')
+        				    	@part[0] + ':00 到 ' + @part[1] + ':00'
+        				    %> 	
+    				    	</div>      
+        
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <!--end a product -->
+</div>
 
 <% else %>
 	<h2>请登录之后查看您的订单</h2>

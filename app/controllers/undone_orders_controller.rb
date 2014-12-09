@@ -26,7 +26,7 @@ class UndoneOrdersController < ApplicationController
   	    Order.transaction do  
           @undone_order.orders_states << OrdersState.new(:order_id=>params[:id].to_i, :state=>"提交结算(共计 " + @money.to_s + " 元)", :create_time=>Time.now)
           @undone_order.update(state_value:5)
-          oi = @undone_order.orders_instruments.find(@undone_order.id)
+          oi = @undone_order.orders_instruments.find_by_order_id(@undone_order.id)
           oi.money =  @money
           oi.save
         end

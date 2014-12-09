@@ -7,18 +7,18 @@
     <div class="block-content">
       <div class="product-info">
         <div class="right">
-          <div class="image"><%= image_tag( @undone_order.orders_instruments.find(@undone_order.id).instrument.image_url, :size => "218x218") %></div>
+          <div class="image"><%= image_tag( @undone_order.orders_instruments.find_by_order_id(@undone_order.id).instrument.image_url, :size => "218x218") %></div>
         </div>
         <div class="category-info">
           <div class="desc_undone_order"> <a>订单号：</a> <%= @undone_order.id.to_s %> </div>
           <div class="desc_undone_order"> <a>提交日期：</a> <%= @undone_order.create_time.to_s.split(' ')[0] %> </div>
           <div class="desc_undone_order"> <a>预约用户：</a> <%= @undone_order.user.name + '(' + @undone_order.user.department.name + ')' %> </div>
           <div class="desc_undone_order"> <a>预约仪器：</a> 
-          	<%= @undone_order.orders_instruments.find(@undone_order.id).instrument.name %> &nbsp; 
-          	<%= @undone_order.orders_instruments.find(@undone_order.id).instrument.type_name %> &nbsp;-&nbsp;
-          	<%=  @undone_order.orders_instruments.find(@undone_order.id).instrument.number %> </div>
+          	<%= @undone_order.orders_instruments.find_by_order_id(@undone_order.id).instrument.name %> &nbsp; 
+          	<%= @undone_order.orders_instruments.find_by_order_id(@undone_order.id).instrument.type_name %> &nbsp;-&nbsp;
+          	<%=  @undone_order.orders_instruments.find_by_order_id(@undone_order.id).instrument.number %> </div>
           <div class="desc_undone_order"> <a>预约时间：</a> 
-          	<%= @part = @undone_order.orders_instruments.find(@undone_order.id).part.split(',')
+          	<%= @part = '7,8'.split(',')
         		@part[0] + ':00 到 ' + @part[1] + ':00'
         	%> </div>
         </div>

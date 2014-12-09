@@ -3,35 +3,33 @@
 <head>
    <title>仪器共享平台</title>
   <%= stylesheet_link_tag "css"%>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	
-<div class="menu">
-<ul>
-<li style="width:0px;"><a></a></li>
-<li><a href="/welcome/index" class="cart"><%=image_tag "home.png"%>主页</a></li>
-<li><%=image_tag "cart.png"%><%= link_to "我的购物车", controller: 'carts' ,action: 'show', id: current_cart %></li>
-<li><a href="/orders" class="cart"><%=image_tag "wish_list.png"%>我的订单</a></li>
-<li><a href="/instruments" class="account"><%=image_tag "account.png"%>仪器提供方</a></li>
-<li><a href="/sessions/signout"><%=image_tag "checkout.png"%>退出</a></li>
-<% if signed_in? %>
-	<li style="float:right;"><a><%=image_tag "account.png"%><%= link_to "我的共享", current_user %></a></li>
-<% else %>
-	<li style="float:right;"><a href="/sessions/signin" class="login"><%=image_tag "login.png"%>登录</a></li>
-	<li style="float:right;"><a><%=image_tag "register.png"%><%= link_to '注册', new_user_path %></a></li>
-<% end %>     
-</ul>
-</div>
-<div class="header">
-	<div class="logo_img">
-		<%=image_tag "logo.png"%>  
+	<div class="menu">
+		<ul>
+			<li style="width:0px;"><a></a></li>
+			<li><a href="/welcome/index" class="cart"><%=image_tag "home.png"%>主页</a></li>
+			<li><%=image_tag "cart.png"%><%= link_to "我的购物车", controller: 'carts' ,action: 'show', id: current_cart %></li>
+			<li><a href="/orders" class="cart"><%=image_tag "wish_list.png"%>我的订单</a></li>
+			<li><a href="/instruments" class="account"><%=image_tag "account.png"%>仪器提供方</a></li>
+			<li><a href="/sessions/signout"><%=image_tag "checkout.png"%>退出</a></li>
+		<% if signed_in? %>
+			<li style="float:right;"><a><%=image_tag "account.png"%><%= link_to "我的共享", current_user %></a></li>
+		<% else %>
+			<li style="float:right;"><a href="/sessions/signin" class="login"><%=image_tag "login.png"%>登录</a></li>
+			<li style="float:right;"><a><%=image_tag "register.png"%><%= link_to '注册', new_user_path %></a></li>
+		<% end %>     
+		</ul>
 	</div>
-</div>
-<%= yield %>
-
+	<div class="header">
+		<div class="logo_img">
+			<%=image_tag "logo.png"%>  
+		</div>
+	</div>
+	<%= yield %>
 </body>
 </html>
 
