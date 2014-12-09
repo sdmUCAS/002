@@ -13,10 +13,11 @@
   
   Department.create([{ name: '信息工程研究所', address: '北京市海淀区闵庄路甲89号2号楼2014室', city: '北京' }, 
  					 { name: '中国科学院大学', address: '北京市怀柔区中国科学院大学教1-115', city: '北京' },
-  					 { name: '南京大学', address: '南宁京南京大学教1-115', city: '南京' }])
+  					 { name: '南京大学', address: '南宁京南京大学教1-115', city: '南京' },
+  					 { name: '生物物理研究所', address: '北京生命科学大型仪器区域中心生物物理研究所8号楼2层', city: '北京' }])
   
   User.create({ username: 'liying', password: 'liying', name: '李莹', sex: '女', uid: '45012222356589', 
-  					phone: '13256895656', email: 'liying@ucas.cn', utype: '2', department_id: 1 })
+  					phone: '13256895656', email: 'liying@ucas.cn', utype: '1', department_id: 1 })
   					
   Instrument.create([{ department_id: 1, image_url: 'public/uploads/1.png', name: '低速大容量冷冻离心机', type_name: 'CR7', number: '0731', itype: '生物',
   						bought_time: '2013-11-17', bought_price: 80000, place: '北京市海淀区闵庄路甲89号2号楼2014室', status: '正常', 
@@ -40,3 +41,26 @@
   					{ department_id: 3, image_url: 'public/uploads/4.png', name: '实验室测设仪/', type_name: 'CR7', number: '0741', itype: '物理',
   						 bought_time: '2013-11-17', bought_price: 20000, place: '南宁京南京大学教1-315', status: '正常', 
   						 price: 300, description: '制备，分离。', user_id: 1}])
+  
+  User.create({ username: 'lxl', password: 'lxl', name: '李小里', sex: '女', uid: '45012222356590', 
+  					phone: '13256896666', email: 'lxl@ucas.cn', utype: '0', department_id: 2 })
+  					
+  Order.create({ user_id: 2, create_time: '2014-12-05 03:01:08' })
+  
+  OrdersInstrument.create({ order_id: 1, instrument_id: 1, order_time: '2014-12-06', part: '3,4' })
+  
+  OrdersState.create({ order_id: 1, state: '提交订单', create_time: '2014-12-05 03:01:08' })	
+  
+    Order.create({ user_id: 2, create_time: '2014-12-05 13:01:08' })
+  
+  OrdersInstrument.create({ order_id: 2, instrument_id: 2, order_time: '2014-12-06', part: '7,8' })
+  
+  OrdersState.create({ order_id: 2, state: '提交订单', create_time: '2014-12-05 13:01:08' })
+  
+  Order.create({ user_id: 2, create_time: '2014-12-05 13:06:08' })
+  
+  OrdersInstrument.create({ order_id: 3, instrument_id: 2, order_time: '2014-12-05', part: '7,8' })
+  
+  OrdersState.create({ order_id: 3, state: '提交订单', create_time: '2014-12-05 13:06:08' })	
+  
+  Order.update_all "state_value = 1"		 

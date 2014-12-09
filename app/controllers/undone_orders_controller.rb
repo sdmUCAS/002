@@ -15,7 +15,9 @@ class UndoneOrdersController < ApplicationController
 
   def account
     if params[:money] == nil
-    	@money = 300
+    	@money = 100
+    else
+    	@money = params[:money] 
 	end
 	  	
     @undone_order = Order.find(params[:id])

@@ -1,15 +1,4 @@
-<%= form_for @undone_order, url: undone_order_path(@undone_order) do |f| %>
-<% if @undone_order.errors.any? %>
 
-<div id="error_explanation">
-  <h2><%= pluralize(@undone_order.errors.count, "error") %> prohibited this undone_order from being saved:</h2>
-  <ul>
-    <% @undone_order.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
 
 <div id="content">
   <div class="block-white">
@@ -35,21 +24,21 @@
         </div>
         
         <% if @undone_order.state_value == 2 %>  
-	        <div class="right"> <%= link_to "刷卡关机", { action: "closedown", id: @undone_order.id },{:class=>"card_button", :method=>:post} %> </div>
-	        <div class="right"> <%= link_to "刷卡开机", { action: "startup", id: @undone_order.id },{:class=>"card_button", :method=>:post} %> </div>
+	        <div class="right"> <%= button_to "刷卡关机", { action: "closedown", id: @undone_order.id }, :form_class =>"card_button" %> </div>
+	        <div class="right"> <%= button_to "刷卡开机", { action: "startup", id: @undone_order.id }, :form_class =>"card_button"%> </div>
         <% elsif @undone_order.state_value == 3 %>  
-	        <div class="right"> <%= link_to "刷卡关机", { action: "closedown", id: @undone_order.id },{:class=>"card_button", :method=>:post} %> </div>
-	        <div class="right"> <%= link_to "刷卡开机", { action: "startup", id: @undone_order.id },{:class=>"card_disable_button", :method=>:post} %> </div>
+	        <div class="right"> <%= button_to "刷卡关机", { action: "closedown", id: @undone_order.id }, :form_class =>"card_button"%> </div>
+	        <div class="right"> <%= button_to "刷卡开机", { action: "startup", id: @undone_order.id }, :form_class =>"card_disable_button" %> </div>
 	    <% else %>  
-	        <div class="right"> <%= link_to "刷卡关机", { action: "closedown", id: @undone_order.id },{:class=>"card_disable_button", :method=>:post} %> </div>
-	        <div class="right"> <%= link_to "刷卡开机", { action: "startup", id: @undone_order.id },{:class=>"card_disable_button", :method=>:post} %> </div>
+	        <div class="right"> <%= button_to("刷卡关机", { action: "closedown", id: @undone_order.id }, :form_class =>"card_disable_button") %> </div>
+	        <div class="right"> <%= button_to "刷卡开机", { action: "startup", id: @undone_order.id }, :form_class =>"card_disable_button" %> </div>
         <% end %>
         
         <div class="category-info">
           <div class="desc_undone_order"> <a>预约状态：</a> </div>
             <% @undone_order.orders_states.each do |state| %>
               <div class="state"> 
-              	<%= state.create_time.to_s(:db) %> &nbsp;&nbsp;       	
+              	<%= state.create_time.to_s(:db) %> &nbsp;&nbsp; 
               	<%= state.state %>
           	</div>
             <% end %>
@@ -58,8 +47,10 @@
         <% if @undone_order.state_value == 4 %>  
 	        <div class="category-info", style="width:530px">
 	          <div class="desc_undone_order"> <a>结算金额：</a> 
-	          	<%= text_field_tag(:money, '', size:30)  %> &nbsp;元 &nbsp;&nbsp; &nbsp;&nbsp; 
-	          		 <%= link_to "提交结算", { :action=>"account", :id=>@undone_order},{:class=>"button", :method=>:post} %>
+	      		  <%= form_tag({controller: "undone_orders", action: "account", :id=>@undone_order}, method: "post") do %>
+		          	  <%= text_field_tag(:money, '', size:30)  %> &nbsp;元 &nbsp;&nbsp; &nbsp;&nbsp; 
+		          	  <%= submit_tag '提交结算' %>
+	          	  <% end %>
 	         </div>    
 	        </div>
          <% end %>
@@ -72,4 +63,4 @@
 </div>
 
 </div>
-<% end %>
+

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :undone_orders do
+  	post :startup, :on => :collection, as: :startup
+  	post :closedown, on: :collection, as: :closedown
+  	post :account, on: :collection, as: :account
+  	post :set_money, on: :collection, as: :set_money
+  end
+
+  resources :uncheck_orders do
+  	post :agree_apointment, on: :collection, as: :agree_apointment
+  end
+  
   get 'welcome/login'
   post 'welcome/login'
   post 'welcome/show'
@@ -13,21 +24,8 @@ Rails.application.routes.draw do
   post 'sessions/add_to_cart', to: 'sessions#add_to_cart'
   post 'orders/new' , to: 'orders#create'
 
-  resources :instruments,:users,:sessions,:orders,:line_items,:carts
-  
-  resources :undone_orders do
-  	post :startup, :on => :collection, as: :startup
-  	post :closedown, on: :collection, as: :closedown
-  	post :account, on: :collection, as: :account
-  	post :set_money, on: :collection, as: :set_money
-  end
+  resources :users,:sessions,:orders,:line_items,:carts
 
-  resources :uncheck_orders
-  resources :uncheck_orders do
-  	post :agree_apointment, on: :collection, as: :agree_apointment
-  end
-
-  resources :instruments
   resources :instruments do
 	post :upload, on: :collection, as: :upload
   end
