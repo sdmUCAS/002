@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+	root "welcome#index"
   resources :undone_orders do
   	post :startup, :on => :collection, as: :startup
   	post :closedown, on: :collection, as: :closedown
@@ -24,12 +24,13 @@ Rails.application.routes.draw do
   get 'sessions/signout', to: 'sessions#destroy', via: :delete
   post 'sessions/add_to_cart', to: 'sessions#add_to_cart'
   post 'orders/new' , to: 'orders#create'
+  get 'orders/pay'
   
 
   resources :users,:sessions,:orders,:line_items,:carts
 
   resources :instruments do
-	post :upload, on: :collection, as: :upload
+		post :upload, on: :collection, as: :upload
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
