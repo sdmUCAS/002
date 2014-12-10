@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
 	before_save { |user| user.username = username.downcase }
   	before_save :create_remember_token
-  	
   	belongs_to :department
-  
     has_many :orders, dependent: :destroy
  		
   private
