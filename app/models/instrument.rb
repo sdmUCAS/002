@@ -10,7 +10,7 @@ class Instrument < ActiveRecord::Base
   	 :multiline => true,
   	 :with => %r{\.(gif|jpg|png)$}i,
   	 :message => 'must be a URL for GIF, JPG or PNG image.'
-  		  
+    		  
   # 检查价格字段的值大于0
   #validate :price_must_be_at_least_a_cent
   #protected
